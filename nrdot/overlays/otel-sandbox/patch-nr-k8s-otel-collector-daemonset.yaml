@@ -1,0 +1,12 @@
+apiVersion: opentelemetry.io/v1beta1
+kind: OpenTelemetryCollector
+metadata:
+  name: nr-k8s-otel-collector-daemonset
+spec:
+  config:
+    processors:
+      resource/newrelic:
+        attributes:
+        - action: upsert
+          key: k8s.cluster.name
+          value: otel-sandbox
